@@ -14,6 +14,11 @@ namespace Lab9
         static Tree_node HuffmanTree;
         public Huffman(Dictionary<char, double> probably)
         {
+            if (probably.Count == 1)
+            {
+                binCode.Add(probably.ElementAt(0).Key, "0");
+                return;
+            }
             this.probably = probably; //beep boop beer!
             init();
             sortBinTree();
@@ -37,9 +42,9 @@ namespace Lab9
             {
                 Tree_node node = HuffmanTree;
                 string code = "";
-                while(node.data != simbol.ToString())
+                while (node.data != simbol.ToString())
                 {
-                    if(node.Left.data.IndexOf(simbol) != -1)
+                    if (node.Left.data.IndexOf(simbol) != -1)
                     {
                         code += node.Left.code;
                         node = node.Left;

@@ -14,12 +14,12 @@ namespace Lab9
         static Dictionary<char, string> binTable = new Dictionary<char, string>();
         static void Main(string[] args)
         {
-            string str = Console.ReadLine(); //ddddd bbb cccc aa
+            string str = readFromFile("text.txt"); /*Console.ReadLine();*/
             createDictAlphabet(str);
             ShannonFano SF = new ShannonFano(probably);
             binTable = SF.BinTable;
             string binCode = coder(str);
-            Console.WriteLine("Шеннон-Фано:\t " + printCode(str));
+            Console.WriteLine("Шеннон-Фано:\t ");// + printCode(str));
             Console.WriteLine("Длина сообщения:\t " + str.Length);
             Console.WriteLine("Длина закодированного:\t " + binCode.Length / 8.0);
             Console.WriteLine("Результат:\t " + decoder(binCode));
@@ -28,7 +28,7 @@ namespace Lab9
             Huffman H = new Huffman(probably);
             binTable = H.BinCode;
             binCode = coder(str);
-            Console.WriteLine("Хаффмен:\t " + printCode(str));
+            Console.WriteLine("Хаффмен:\t ");// + printCode(str));
             Console.WriteLine("Длина сообщения:\t " + str.Length);
             Console.WriteLine("Длина закодированного:\t " + binCode.Length / 8.0);
             Console.WriteLine("Результат:\t " + decoder(binCode));

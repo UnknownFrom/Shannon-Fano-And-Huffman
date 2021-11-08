@@ -12,6 +12,11 @@ namespace Lab9
         Dictionary<char, string> binTable = new Dictionary<char, string>();
         public ShannonFano(Dictionary<char, double> probably)
         {
+            if (probably.Count == 1)
+            {
+                binTable.Add(probably.ElementAt(0).Key, "0");
+                return;
+            }
             this.probably = probably;
             sortProbably();
             createBinTable();
