@@ -19,14 +19,20 @@ namespace Lab9
             ShannonFano SF = new ShannonFano(probably);
             binTable = SF.BinTable;
             string binCode = coder(str);
-            Console.WriteLine("Шеннон-Фано:\t " + binCode);
+            Console.WriteLine("Шеннон-Фано:\t " + printCode(str));
+            Console.WriteLine("Длина сообщения:\t " + str.Length);
+            Console.WriteLine("Длина закодированного:\t " + binCode.Length / 8.0);
             Console.WriteLine("Результат:\t " + decoder(binCode));
+            Console.WriteLine("Цена кодирования:\t " + findCodingPrice());
             Console.WriteLine();
             Huffman H = new Huffman(probably);
             binTable = H.BinCode;
             binCode = coder(str);
-            Console.WriteLine("Хаффмен:\t " + binCode);
+            Console.WriteLine("Хаффмен:\t " + printCode(str));
+            Console.WriteLine("Длина сообщения:\t " + str.Length);
+            Console.WriteLine("Длина закодированного:\t " + binCode.Length / 8.0);
             Console.WriteLine("Результат:\t " + decoder(binCode));
+            Console.WriteLine("Цена кодирования:\t " + findCodingPrice());
 
         }
 
@@ -38,6 +44,26 @@ namespace Lab9
                 result = reader.ReadToEnd();
                 return result;
             }
+        }
+
+        static double findCodingPrice()
+        {
+            double result = 0;
+            for (int i = 0; i < binTable.Count; i++)
+            {
+                result += binTable.ElementAt(i).Value.Length * probably[binTable.ElementAt(i).Key];
+            }
+            return result;
+        }
+
+        static public string printCode(string str)
+        {
+            string result = "";
+            for (int i = 0; i < str.Length; i++)
+            {
+                result += binTable[str[i]] + " ";
+            }
+            return result;
         }
 
         static public string coder(string str)
