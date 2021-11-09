@@ -107,14 +107,6 @@ namespace Lab9
                 binTree.Insert(0, parent);
 
                 sortBinTree();
-
-                /*string simbolLeft = binTree[0].data;
-                double probablyLeft = binTree[0].probably;
-                Tree_node left = new Tree_node(simbolLeft, probablyLeft);
-
-                string simbolRight = binTree[0].data;
-                double probablyRight = binTree[0].probably;
-                Tree_node right = new Tree_node(simbolRight, probablyRight);*/
             }
             HuffmanTree = binTree[0];
         }
@@ -122,11 +114,6 @@ namespace Lab9
         private void sortBinTree()
         {
             binTree = binTree.OrderBy(x => x.probably).ToList();
-        }
-
-        private void sortProbably()
-        {
-            probably = probably.OrderByDescending(x => x.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
     }
 }

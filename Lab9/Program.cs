@@ -121,13 +121,6 @@ namespace Lab9
             {
                 probably.Add(key, charAlphabet[key] / str.Length);
             }
-            //sortProbably();
         }
-
-        static void sortProbably()
-        {
-            probably = probably.OrderByDescending(x => x.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-
     }
 }
